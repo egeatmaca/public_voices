@@ -8,13 +8,18 @@
     </head>
 
     <body>
-        <h1> PublicView </h1>
-        <h2> Express opinions and see public views on important topics. </h2>
-        <ol class=".hot_topics"> 
+        <div class="header">
+            <h1> PublicView <h3> Express your opinions and listen the community! </h3> </h1> 
+        </div>
+        <div class="topic_list"> 
+            <h2> Hot Topics </h2>
             {% for topic in topics %}
-                <li> {{ topic }} </li>
+                <div class="topic_preview"> 
+                    <h3> {{ topic.title }} </h3>
+                    <p> {{ topic.content }} </p>
+                </div>
             {% endfor %}
-        </ol>
+        </div>
     </body>
 
 </html>

@@ -1,12 +1,14 @@
+from datetime import datetime as dt
+
 class Topic:
-    def __init__(self, id, title, content, user_id, created_at, updated_at):
+    def __init__(self, id, title, content, user_id):
         self.id = id
         self.title = title
         self.content = content
         self.comments = []
         self.user_id = user_id
-        self.created_at = created_at
-        self.updated_at = updated_at
+        self.created_at = dt.now()
+        self.updated_at = dt.now()
 
     @staticmethod
     def insert():

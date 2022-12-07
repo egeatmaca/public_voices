@@ -1,11 +1,18 @@
 body {
-    background-color: #491919;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: rgb(255, 255, 255);
-    margin: 0;
-    padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     align-items: center;
     text-align: center;
+}
+
+.header {
+    background-color: #194933;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    padding: 1%;
+    position: relative;
+    right: 1%;
+}
+
+.topic_list {
+    margin: 2%;
 }
