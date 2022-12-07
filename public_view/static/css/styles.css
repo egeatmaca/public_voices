@@ -4,15 +4,21 @@ body {
     text-align: center;
 }
 
-.header {
+.app_header {
     background-color: #194933;
     color: rgb(255, 255, 255);
     width: 100%;
     padding: 1%;
-    position: relative;
-    right: 1%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-.topic_list {
-    margin: 2%;
+.app_header h1,h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.app_body {
+    margin: 15%;
 }

@@ -8,17 +8,19 @@
     </head>
 
     <body>
-        <div class="header">
-            <h1> PublicView <h3> Express your opinions and listen the community! </h3> </h1> 
+        <div class="app_header">
+            <h1> PublicView </h1>
         </div>
-        <div class="topic_list"> 
-            <h2> Hot Topics </h2>
-            {% for topic in topics %}
-                <div class="topic_preview"> 
-                    <h3> {{ topic.title }} </h3>
-                    <p> {{ topic.content }} </p>
-                </div>
-            {% endfor %}
+        <div class="app_body">
+            <div class="topic_list"> 
+                <h2> Hot Topics </h2>
+                {% for topic in topics %}
+                    <div class="topic_preview"> 
+                        <h3> {{ topic.title }} </h3>
+                        <p> {{ topic.content }} </p>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </body>
 
