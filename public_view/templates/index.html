@@ -1,0 +1,20 @@
+{% load static %}
+
+<html>
+
+    <head>
+        <title> PublicView </title>
+        <link rel="stylesheet" type="text/css" href={% static 'css/styles.css' %}>
+    </head>
+
+    <body>
+        <h1> PublicView </h1>
+        <h2> Express opinions and see public views on important topics. </h2>
+        <ol class=".hot_topics"> 
+            {% for topic in topics %}
+                <li> {{ topic }} </li>
+            {% endfor %}
+        </ol>
+    </body>
+
+</html>

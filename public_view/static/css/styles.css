@@ -1,0 +1,11 @@
+body {
+    background-color: #491919;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+}
