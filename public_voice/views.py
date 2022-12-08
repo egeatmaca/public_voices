@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from public_view.models.Topic import Topic
+from public_voice.models import Topic
 
 def index(request):
     return render(

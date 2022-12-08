@@ -16,6 +16,11 @@ body {
     box-shadow: 0 0 2.5px 0 #171717;
 }
 
+.app_header h1 image {
+    width: 100%;
+    height: fit-content;
+}
+
 h1, h2, h3 {
     margin: 0;
     padding: 0;

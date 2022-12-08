@@ -1,1 +1,2 @@
 Django==3.2.12
+pymongo==4.3.3

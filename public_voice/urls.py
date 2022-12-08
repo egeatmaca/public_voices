@@ -1,4 +1,4 @@
-"""public_view URL Configuration
+"""public_voice URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.urls import path
 from django.contrib import admin
-from public_view.views.index import index
+from public_voice.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
