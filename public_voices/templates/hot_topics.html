@@ -3,7 +3,7 @@
 <html>
 
     <head>
-        <title> Public Voice </title>
+        <title> Public Voices </title>
         <link rel="stylesheet" type="text/css" href={% static 'css/styles.css' %}>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <script src="https://unpkg.com/vue@3"></script>
@@ -12,33 +12,36 @@
 
     <body>
         <div class="app_header">
-            <h1>Public Voice </h1>
+            <a href="/"> <h1>Public Voices </h1> </a>
         </div>
         <div class="app_body">
-            <div class="topic_list"> 
+            <div class="card_list"> 
                 <h2> 🔥 Hot Topics 🔥 </h2>
                 {% for topic in topics %}
-                    <div class="topic_preview"> 
-                        <h3> {{ topic.title }} </h3>
-                        <p> {{ topic.description }} </p>
-                    </div>
+                    <a href={{ topic.url }}>
+                        <div class="topic_preview">
+                            <h3> {{ topic.title }} </h3> 
+                            <p> {{ topic.description }} </p>
+                        </div>
+                    </a>
                 {% endfor %}
             </div>
             
-            <div class="create_topic">
-                <button> 
+            <div class="create_modal">
+                <button class="btn_create"> 
                     <h3> Create topic! </h3> 
                 </button>
                 <div class="modal_container">
                     <form class="modal_bottom">
-                        <input type="long-text" name="title" placeholder="Title"/> <br/>
+                        <input type="text" name="title" placeholder="Title"/> <br/>
                         <textarea name="Text1" cols="40" rows="5" placeholder="Description"> </textarea> <br/>
-                        <input type="submit" value="Cancel"/>
-                        <input type="submit" value="Submit"/>
+                        <button class="btn40"> Cancel </button>
+                        <button class="btn40 btn_submit"> Submit </button>
                     </form>
                 </div>
             </div>
         </div>
+        <script src={% static 'js/create_modal_listener.js' %}></script>
     </body>
 
 </html>

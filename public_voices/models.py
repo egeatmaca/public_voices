@@ -31,6 +31,8 @@ class Model:
 class Topic(Model):
     def __init__(self, id, title, description, user_id):
         self.id = id
+        self.url = f'/topic/{id}'
+        self.analyze_url = f'/analyze/{id}'
         self.title = title
         self.description = description
         self.comments = []

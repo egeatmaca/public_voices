@@ -27,11 +27,13 @@ h1, h2, h3 {
 }
 
 h1 {
+    color: #171717;
     text-shadow: #242424 0 0 1.5px;
 }
 
 .app_body {
-    margin-top: 12.5%;
+    width: 90%;
+    margin: 12.5% auto;
 }
 
  @media screen and (min-width: 600px) {
@@ -45,8 +47,9 @@ h1 {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 0%;
+    height: 0%;
+    display: none;
 }
 
 .modal_bottom {
@@ -57,13 +60,9 @@ h1 {
     width: 100%;
     padding: 1%;
     box-shadow: 0 0 2.5px 0 #171717;
-    display: none;
 }
 
-.create_topic button {
-    position: fixed;
-    bottom: 2.5%;
-    right: 2.5%;
+button {
     background-color: #8b1515;
     color: antiquewhite;
     border: none;
@@ -71,7 +70,32 @@ h1 {
     padding: 1%;
 }
 
-.topic_preview {
+.btn_create {
+    position: fixed;
+    bottom: 2.5%;
+    right: 2.5%;
+}
+
+.btn40 {
+    width: 40%;
+}
+
+.btn_submit {
+    background-color: #26288a;
+    color: antiquewhite;
+}
+
+input, textarea {
+    background-color: antiquewhite;
+    color: #171717;
+    border: none;
+    border-radius: 10px;
+    padding: 1%;
+    margin: 1%;
+    width: 90%;
+}
+
+.card_list div {
     background-color: #40f0a0;
     color: rgb(0, 0, 0);
     text-align: left;
@@ -81,6 +105,16 @@ h1 {
     box-shadow: 0 0 2.5px 0 #171717;
 }
 
-.topic_list h2, .topic_list h3 {
+.card_list h2, .card_list h3 {
+    color: #8b1515;
+}
+
+a {
+    text-decoration: none;
+}
+
+.analyze_link {
+    float: right;
+    margin-right: 2.5%;
     color: #8b1515;
 }

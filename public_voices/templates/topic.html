@@ -1,0 +1,50 @@
+{% load static %}
+
+<html>
+
+    <head>
+        <title> Public Voices </title>
+        <link rel="stylesheet" type="text/css" href={% static 'css/styles.css' %}>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <script src="https://unpkg.com/vue@3"></script>
+        <link rel="icon" href={% static 'images/favicon.ico' %}>
+    </head>
+
+    <body>
+        <div class="app_header">
+            <a href="/"> <h1>Public Voices </h1> </a>
+        </div>
+        <div class="app_body">
+            <div class="card_list"> 
+                <div class="topic">
+                    <a class="analyze_link" href={{ topic.analyze_url }}>
+                        Analyze comments!
+                    </a>
+                    <h2> {{ topic.title }} </h2>
+                    <p> {{ topic.description }} </p>
+                </div>
+                {% for comment in comments %}
+                    <div class="comment">
+                        <p> {{ comment.content }} </p>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div class="create_modal">
+                <button class="btn_create"> 
+                    <h3> Comment! </h3> 
+                </button>
+                <div class="modal_container">
+                    <form class="modal_bottom">
+                        <h4> Comment: </h4>
+                        <textarea name="comment" cols="40" rows="5"> </textarea> <br/>
+                        <button class="btn40"> Cancel </button>
+                        <button class="btn40 btn_submit"> Submit </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src={% static 'js/create_modal_listener.js' %}></script>
+    </body>
+
+</html>

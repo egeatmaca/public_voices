@@ -1,5 +1,5 @@
 """
-WSGI config for public_voice project.
+WSGI config for public_voices project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'public_voice.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'public_voices.settings')
 
 application = get_wsgi_application()
