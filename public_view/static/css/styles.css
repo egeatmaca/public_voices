@@ -1,24 +1,81 @@
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #faebd7;
+    font-family: 'Roboto', sans-serif;
     align-items: center;
     text-align: center;
 }
 
 .app_header {
-    background-color: #194933;
-    color: rgb(255, 255, 255);
+    background-color: #40f0a0;
+    color: #171717;
     width: 100%;
     padding: 1%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
+    box-shadow: 0 0 2.5px 0 #171717;
 }
 
-.app_header h1,h3 {
+h1, h2, h3 {
     margin: 0;
     padding: 0;
 }
 
+h1 {
+    text-shadow: #242424 0 0 1.5px;
+}
+
 .app_body {
-    margin: 15%;
+    margin-top: 12.5%;
+}
+
+ @media screen and (min-width: 600px) {
+    .app_body {
+        width: 50%;
+        margin: 7.5% auto;
+    }
+}
+
+.modal_container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal_bottom {
+    position: fixed;
+    bottom: 0%;
+    background-color: #40f0a0;
+    color: #171717;
+    width: 100%;
+    padding: 1%;
+    box-shadow: 0 0 2.5px 0 #171717;
+    display: none;
+}
+
+.create_topic button {
+    position: fixed;
+    bottom: 2.5%;
+    right: 2.5%;
+    background-color: #8b1515;
+    color: antiquewhite;
+    border: none;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+.topic_preview {
+    background-color: #40f0a0;
+    color: rgb(0, 0, 0);
+    text-align: left;
+    padding: 2.5% 2.5%;
+    margin: 2.5% 0;
+    border-radius: 10px;
+    box-shadow: 0 0 2.5px 0 #171717;
+}
+
+.topic_list h2, .topic_list h3 {
+    color: #8b1515;
 }

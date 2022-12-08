@@ -3,23 +3,39 @@
 <html>
 
     <head>
-        <title> PublicView </title>
+        <title> Public Voice </title>
         <link rel="stylesheet" type="text/css" href={% static 'css/styles.css' %}>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <script src="https://unpkg.com/vue@3"></script>
     </head>
 
     <body>
         <div class="app_header">
-            <h1> PublicView </h1>
+            <h1>PublicVoice</h1>
         </div>
         <div class="app_body">
             <div class="topic_list"> 
-                <h2> Hot Topics </h2>
+                <h2> 🔥 Hot Topics 🔥 </h2>
                 {% for topic in topics %}
                     <div class="topic_preview"> 
                         <h3> {{ topic.title }} </h3>
-                        <p> {{ topic.content }} </p>
+                        <p> {{ topic.description }} </p>
                     </div>
                 {% endfor %}
+            </div>
+            
+            <div class="create_topic">
+                <button> 
+                    <h3> Create topic! </h3> 
+                </button>
+                <div class="modal_container">
+                    <form class="modal_bottom">
+                        <input type="long-text" name="title" placeholder="Title"/> <br/>
+                        <textarea name="Text1" cols="40" rows="5" placeholder="Description"> </textarea> <br/>
+                        <input type="submit" value="Cancel"/>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                </div>
             </div>
         </div>
     </body>
