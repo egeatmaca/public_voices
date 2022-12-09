@@ -32,4 +32,4 @@ document.querySelector('.btn_submit').addEventListener('click', function(e) {
           return;
       }
     }
-})
+});
