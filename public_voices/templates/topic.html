@@ -16,7 +16,7 @@
         </div>
         <div class="app_body">
             <div class="card_list"> 
-                <div class="topic">
+                <div class="topic card">
                     <a class="analyze_link" href={{ topic.analyze_url }}>
                         Analyze comments!
                     </a>
@@ -24,7 +24,7 @@
                     <p> {{ topic.description }} </p>
                 </div>
                 {% for comment in comments %}
-                    <div class="comment">
+                    <div class="comment card">
                         <p> {{ comment.content }} </p>
                     </div>
                 {% endfor %}
@@ -36,9 +36,8 @@
                 </button>
                 <div class="modal_container">
                     <form class="modal_bottom">
-                        <h4> Comment: </h4>
                         <textarea name="comment" cols="40" rows="5"> </textarea> <br/>
-                        <button class="btn_submit"> Submit </button>
+                        <button class="btn_submit"> Comment! </button>
                     </form>
                 </div>
             </div>

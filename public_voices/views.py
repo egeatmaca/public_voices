@@ -2,7 +2,7 @@ from django.shortcuts import render
 from public_voices.models import Topic, Comment, User
 
 
-def index(request):
+def hot_topics(request):
     return render(
         request,
         'hot_topics.html',
@@ -26,3 +26,9 @@ def topic(request, topic_id):
                          for i in range(1, 11)]
         }
     )
+
+def signup(request):
+    return render(request, 'signup.html')
+
+def login(request):
+    return render(request, 'login.html')

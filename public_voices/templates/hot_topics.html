@@ -19,7 +19,7 @@
                 <h2> 🔥 Hot Topics 🔥 </h2>
                 {% for topic in topics %}
                     <a href={{ topic.url }}>
-                        <div class="topic_preview">
+                        <div class="card">
                             <h3> {{ topic.title }} </h3> 
                             <p> {{ topic.description }} </p>
                         </div>
@@ -33,7 +33,7 @@
                 </button>
                 <div class="modal_container">
                     <form class="modal_bottom">
-                        <input type="text" name="title" placeholder="Title"/> <br/>
+                        <input type="text" name="title" placeholder="Title" required/> <br/>
                         <textarea name="description" cols="40" rows="5" placeholder="Description"> </textarea> <br/>
                         <button class="btn_submit"> Submit </button>
                     </form>

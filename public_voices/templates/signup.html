@@ -1,0 +1,28 @@
+{% load static %}
+
+<html>
+    
+        <head>
+            <title> Public Voices </title>
+            <link rel="stylesheet" type="text/css" href={% static 'css/styles.css' %}>
+            <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+            <script src="https://unpkg.com/vue@3"></script>
+            <link rel="icon" href={% static 'images/favicon.ico' %}>
+        </head>
+    
+        <body>
+            <div class="app_header">
+                <a href="/"> <h1>Public Voices </h1> </a>
+            </div>
+            <div class="app_body">
+                <form class="auth_form">
+                    <input type="email" name="email" placeholder="Email" required/> <br/>
+                    <input type="text" name="username" placeholder="Username" required/> <br/>
+                    <button class="btn_submit"> Sign up! </button>
+                    <br/>
+                    <br/>
+                    <p> Already have an account? <a href="/"> Login </a> </p>
+                </form>
+            </div>
+        </body>
+</html>

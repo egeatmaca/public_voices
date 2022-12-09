@@ -19,3 +19,17 @@ document
     modal_container.style.width = "0";
     modal_container.style.height = "0";
   });
+
+document.querySelector('.btn_submit').addEventListener('click', function(e) {
+    var textareas = document.querySelectorAll(
+      ".create_modal textarea"
+    );
+
+    for (var textarea of textareas) {
+      if (textarea.value.trim() == "") {
+          alert("Please fill out all fields.");
+          e.preventDefault();
+          return;
+      }
+    }
+})
