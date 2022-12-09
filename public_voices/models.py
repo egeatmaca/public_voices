@@ -14,33 +14,33 @@ class Model:
     collection_name = 'topics'
     collection = db.topics
 
-    @staticmethod
-    def insert_one(model_obj):
-        res = Model.collection.insert_one(model_obj.__dict__)
+    @classmethod
+    def insert_one(cls, model_obj):
+        res = cls.collection.insert_one(model_obj.__dict__)
         return res
 
-    @staticmethod
-    def find(query):
-        iter = Model.collection.find(query)
+    @classmethod
+    def find(cls, query):
+        iter = cls.collection.find(query)
         records = []
         for record in iter:
             records.append(record)
         return records
 
-    @staticmethod
-    def find_one(query):
-        iter = Model.collection.find(query)
+    @classmethod
+    def find_one(cls, query):
+        iter = cls.collection.find(query)
         for record in iter:
             return record
         return None
         
-    @staticmethod
-    def update_one(query, update):
-        return Model.collection.update_one(query, update)
+    @classmethod
+    def update_one(cls, query, update):
+        return cls.collection.update_one(query, update)
 
-    @staticmethod
-    def delete_one(query):
-        return Model.collection.delete_one(query)
+    @classmethod
+    def delete_one(cls, query):
+        return cls.collection.delete_one(query)
 
     def add_one_to_many_to(self, model_class, foreign_key):
         other = model_class.find_one({'_id': self.__dict__[foreign_key]})
@@ -65,8 +65,8 @@ class Topic(Model):
         self.created_at = dt.now()
         self.updated_at = dt.now()
 
-    @staticmethod
-    def insert_one(model_obj):
+    @classmethod
+    def insert_one(cls, model_obj):
         res = Topic.collection.insert_one(model_obj.__dict__)
         _id = res.inserted_id
         model_obj.url = f'/topic/{_id}'
@@ -86,8 +86,8 @@ class Comment(Model):
         self.user_id = user_id
         self.date_posted = dt.now()
 
-    @staticmethod
-    def insert_one(model_obj):
+    @classmethod
+    def insert_one(cls, model_obj):
         res = Comment.collection.insert_one(model_obj.__dict__)
         # model_obj.id = res.inserted_id
         # model_obj.add_one_to_many_to(Topic, 'topic_id')

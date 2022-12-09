@@ -29,7 +29,7 @@ def topic(request, topic_id):
     topic = Topic.find_one({'_id': ObjectId(topic_id)})
     topic['create_comment_url'] = f'/create_comment/{topic_id}'
 
-    comments = Comment.find({'topic_id': ObjectId(topic_id)})
+    comments = Comment.find({'topic_id': topic_id})
 
     return render(request, 'topic.html', {'topic': topic, 'comments': comments})
 
