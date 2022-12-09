@@ -21,12 +21,19 @@ class Model:
 
     @staticmethod
     def find(query):
-        return Model.collection.find(query)
+        iter = Model.collection.find(query)
+        records = []
+        for record in iter:
+            records.append(record)
+        return records
 
     @staticmethod
     def find_one(query):
-        return Model.collection.find_one(query)
-
+        iter = Model.collection.find(query)
+        for record in iter:
+            return record
+        return None
+        
     @staticmethod
     def update_one(query, update):
         return Model.collection.update_one(query, update)
@@ -49,10 +56,8 @@ class Topic(Model):
     collection_name = 'topics'
     collection = db.topics
 
-    def __init__(self, title, description, user_id, _id=None, url=None, analyze_url=None):
+    def __init__(self, title, description, user_id, _id=None):
         self.id = _id
-        self.url = url
-        self.analyze_url = analyze_url
         self.title = title
         self.description = description
         # self.comments = []
@@ -84,7 +89,7 @@ class Comment(Model):
     @staticmethod
     def insert_one(model_obj):
         res = Comment.collection.insert_one(model_obj.__dict__)
-        model_obj.id = res.inserted_id
+        # model_obj.id = res.inserted_id
         # model_obj.add_one_to_many_to(Topic, 'topic_id')
         return res
 

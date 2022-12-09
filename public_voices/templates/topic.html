@@ -35,8 +35,8 @@
                     <h3> Comment! </h3> 
                 </button>
                 <div class="modal_container">
-                    <form action="/create_comment" method="post" class="modal_bottom">
-                        <textarea name="comment" cols="40" rows="5"> </textarea> <br/>
+                    <form action={{ topic.create_comment_url }} method="post" class="modal_bottom">
+                        <textarea name="content" cols="40" rows="5"> </textarea> <br/>
                         <button class="btn_submit"> Comment! </button>
                     </form>
                 </div>
