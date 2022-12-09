@@ -36,13 +36,6 @@ h1 {
     margin: 12.5% auto;
 }
 
- @media screen and (min-width: 600px) {
-    .app_body {
-        width: 50%;
-        margin: 7.5% auto;
-    }
-}
-
 .modal_container {
     position: absolute;
     bottom: 0;
@@ -117,4 +110,15 @@ a {
     float: right;
     margin-right: 2.5%;
     color: #8b1515;
+}
+
+ @media screen and (min-width: 600px) {
+    .app_body {
+        width: 50%;
+        margin: 7.5% auto;
+    }
+
+    .modal_bottom {
+        width: 50%;
+    }
 }
