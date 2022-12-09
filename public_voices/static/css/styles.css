@@ -37,12 +37,14 @@ h1 {
 }
 
 .modal_container {
-    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 0%;
     height: 0%;
     display: none;
+    align-items: center;
 }
 
 .modal_bottom {
@@ -53,6 +55,7 @@ h1 {
     width: 100%;
     padding: 1%;
     box-shadow: 0 0 2.5px 0 #171717;
+    border-radius: 10px;
 }
 
 button {
@@ -120,5 +123,7 @@ a {
 
     .modal_bottom {
         width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
     }
 }

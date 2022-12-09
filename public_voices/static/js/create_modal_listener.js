@@ -5,5 +5,4 @@ document.querySelector('.btn_create').addEventListener('click', function(e) {
     modal_container.style.display = "block";
     modal_container.style.width = "100%";
     modal_container.style.height = "100%";
-    console.log(modal_container)
 });
