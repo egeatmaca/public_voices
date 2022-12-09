@@ -58,7 +58,7 @@ h1 {
     border-radius: 10px;
 }
 
-button {
+button,.btn {
     background-color: #8b1515;
     color: antiquewhite;
     border: none;
@@ -72,13 +72,10 @@ button {
     right: 2.5%;
 }
 
-.btn40 {
-    width: 40%;
-}
-
 .btn_submit {
     background-color: #26288a;
     color: antiquewhite;
+    width: 50%;
 }
 
 input, textarea {
