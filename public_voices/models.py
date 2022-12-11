@@ -56,10 +56,10 @@ class Topic(Model):
     collection_name = 'topics'
     collection = db.topics
 
-    def __init__(self, title, description, user_id, _id=None):
+    def __init__(self, title, initial_comment, user_id, _id=None):
         self.id = _id
         self.title = title
-        self.description = description
+        self.initial_comment = initial_comment
         # self.comments = []
         self.user_id = user_id
         self.created_at = dt.now()
@@ -79,9 +79,10 @@ class Comment(Model):
     collection_name = 'comments'
     collection = db.comments
 
-    def __init__(self, content, topic_id, user_id, _id=None):
+    def __init__(self, content, agree, topic_id, user_id, _id=None):
         self.id = _id
         self.content = content
+        self.agree = agree
         self.topic_id = topic_id
         self.user_id = user_id
         self.created_at = dt.now()

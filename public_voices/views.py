@@ -33,7 +33,7 @@ def hot_topics(request):
 @csrf_exempt
 def create_topic(request):
     Topic.insert_one(
-        Topic(request.POST['title'], request.POST ['description'], request.session['user_id']))
+        Topic(request.POST['title'], request.POST ['initial_comment'], request.session['user_id']))
     return redirect('/hot_topics')
 
 
@@ -57,7 +57,7 @@ def topic(request, topic_id):
 @csrf_exempt
 def create_comment(request, topic_id):
     # return HttpResponse(request.Path:)
-    Comment.insert_one(Comment(request.POST['content'], topic_id, request.session['user_id']))
+    Comment.insert_one(Comment(request.POST['content'], request.POST['agree'], topic_id, request.session['user_id']))
     Topic.update_one({'_id': ObjectId(topic_id)}, {'$set': {'updated_at': dt.now()}})
     return redirect(f'/topic/{topic_id}')
 

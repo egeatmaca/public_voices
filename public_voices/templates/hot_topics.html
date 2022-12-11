@@ -20,10 +20,13 @@
                 <h2> 🔥 Hot Topics 🔥 </h2>
                 {% for topic in topics %}
                     <a href={{ topic.url }}>
-                        <div class="card">
+                        <div class="topic card">
                             <h3> {{ topic.title }} </h3> 
-                            <p> {{ topic.description }} </p>
-                            <p class="username"> {{ topic.username }} </p>
+                            <p> {{ topic.initial_comment }} </p>
+                            <div class="card_footer">
+                                <p class="inline_block"></p>
+                                <p class="username"> {{ topic.username }} </p>
+                            </div>
                         </div>
                     </a>
                 {% endfor %}
@@ -36,8 +39,8 @@
                 <div class="modal_container">
                     {% if logged_in %}
                         <form action="/create_topic/" method="post" class="modal_bottom">
-                            <input type="text" name="title" placeholder="Title" required/> <br/>
-                            <textarea name="description" cols="40" rows="5"> </textarea> <br/>
+                            <input type="text" name="title" placeholder="Topic title..." required/> <br/>
+                            <textarea name="initial_comment" cols="40" rows="5" placeholder="Initial comment..." required></textarea> <br/>
                             <button class="btn_submit"> Submit </button>
                         </form>
                     {% else %}

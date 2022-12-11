@@ -44,6 +44,26 @@ h1 {
     height: 0;
 }
 
+.agree span {
+    margin-top: 2%;
+}
+
+.agree .disagree_label {
+    float: left;
+    margin-left: 2.5%;
+    color: #8b1515;
+}
+
+.agree .agree_label {
+    float: right;
+    margin-right: 2.5%;
+    color: #113b00;
+}
+
+.agree .slider {
+    width: 70%;
+}
+
 /* Modals */
 
 .modal_container {
@@ -121,13 +141,24 @@ a {
 .analyze_link {
     float: right;
     margin-right: 2.5%;
+    margin-top: 2.5%;
     color: #8b1515;
 }
 
-p.username {
-    text-align: end;
-    margin: 2.5% 2.5%;
+.inline_block {
+    display: inline-block;
+}
+
+.card_footer .username {
+    display: inline;
+    float: inline-end;
+    margin-right: 2.5%;
     color: #26288a;
+}
+
+.card_footer .agree_points {
+    display: inline-block;
+    text-align: start;
 }
 
 /* Authentication */

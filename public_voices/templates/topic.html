@@ -17,18 +17,24 @@
         </div>
         <div class="app_body">
             <div class="card_list"> 
+                <a class=analyze_link href={{ topic.analyze_url }}>
+                    Analyze comments!
+                </a>
                 <div class="topic card">
-                    <a class="analyze_link" href={{ topic.analyze_url }}>
-                        Analyze comments!
-                    </a>
                     <h2> {{ topic.title }} </h2>
-                    <p> {{ topic.description }} </p>
-                    <p class="username"> {{ topic.username }} </p>
+                    <p> {{ topic.initial_comment }} </p>
+                    <div class="card_footer">
+                        <p class="inline_block"></p>
+                        <p class="username"> {{ topic.username }} </p>
+                    </div>
                 </div>
                 {% for comment in comments %}
                     <div class="comment card">
                         <p> {{ comment.content }} </p>
-                        <p class="username"> {{ comment.username }} </p>
+                        <div class="card_footer">
+                            <p class="agree_points"> Agree Points: {{ comment.agree }} </p>
+                            <p class="username"> {{ comment.username }} </p>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
@@ -40,7 +46,12 @@
                 <div class="modal_container">
                     {% if logged_in %}
                         <form action={{ topic.create_comment_url }} method="post" class="modal_bottom">
-                            <textarea name="content" cols="40" rows="5"> </textarea> <br/>
+                            <div class="agree">
+                                <span class="disagree_label"> Disagree </span> 
+                                <input type="range" name="agree" min="-3" max="3" value="0" class="slider"/> 
+                                <span class="agree_label"> Agree </span>
+                            </div>
+                            <textarea name="content" cols="40" rows="5" placeholder="Comment..."></textarea> <br/>
                             <button class="btn_submit"> Comment! </button>
                         </form>
                     {% else %}
