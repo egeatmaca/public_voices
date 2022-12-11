@@ -29,13 +29,19 @@ h1, h2, h3 {
 }
 
 h1 {
-    color: #171717;
+    color: #26288a;
     text-shadow: #242424 0 0 1.5px;
 }
 
 .app_body {
     width: 90%;
     margin: 15% auto;
+}
+
+.invisible {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 /* Modals */
@@ -116,6 +122,12 @@ a {
     float: right;
     margin-right: 2.5%;
     color: #8b1515;
+}
+
+p.username {
+    text-align: end;
+    margin: 2.5% 2.5%;
+    color: #26288a;
 }
 
 /* Authentication */

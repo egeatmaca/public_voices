@@ -22,10 +22,12 @@
                     </a>
                     <h2> {{ topic.title }} </h2>
                     <p> {{ topic.description }} </p>
+                    <p class="username"> {{ topic.username }} </p>
                 </div>
                 {% for comment in comments %}
                     <div class="comment card">
                         <p> {{ comment.content }} </p>
+                        <p class="username"> {{ comment.username }} </p>
                     </div>
                 {% endfor %}
             </div>
@@ -35,10 +37,23 @@
                     <h3> Comment! </h3> 
                 </button>
                 <div class="modal_container">
-                    <form action={{ topic.create_comment_url }} method="post" class="modal_bottom">
-                        <textarea name="content" cols="40" rows="5"> </textarea> <br/>
-                        <button class="btn_submit"> Comment! </button>
-                    </form>
+                    {% if logged_in %}
+                        <form action={{ topic.create_comment_url }} method="post" class="modal_bottom">
+                            <textarea name="content" cols="40" rows="5"> </textarea> <br/>
+                            <button class="btn_submit"> Comment! </button>
+                        </form>
+                    {% else %}
+                        <form action="/login/" method="post" class="modal_bottom">
+                            <input type="email" name="email" placeholder="Email" required/> <br/>
+                            <input type="password" name="password" placeholder="Password" required/> <br/>
+                            <input type="text" name="redirect_url" class="invisible" value={{ login_redirect_url }}/>
+                            <button class="btn_submit"> Login! </button>
+                            <br/>
+                            <br/>
+                            <p> Don't have an account? <a href="/signup/"> Sign up </a> </p> 
+                            <p> Forgot your password? <a href="/reset_password/"> Reset password </a> </p>
+                        </form>
+                    {% endif %}
                 </div>
             </div>
         </div>

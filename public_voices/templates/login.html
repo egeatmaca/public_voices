@@ -15,8 +15,12 @@
                 <a href="/"> <h1>Public Voices </h1> </a>
             </div>
             <div class="app_body">
-                <div class="auth_form">
-                <form class="">
+                {% if error %}
+                    <div class="error">
+                        <p> {{ error }} </p>
+                    </div>
+                {% endif %}
+                <form class="auth_form" action="/login" method="post">
                     <input type="email" name="email" placeholder="Email" required/> <br/>
                     <input type="password" name="password" placeholder="Password" required/> <br/>
                     <button class="btn_submit"> Login! </button>
@@ -25,7 +29,6 @@
                     <p> Don't have an account? <a href="/signup"> Sign up </a> </p> 
                     <p> Forgot your password? <a href="/reset_password"> Reset password </a> </p>
                 </form>
-                </div>
             </div>
         </body>
 </html>

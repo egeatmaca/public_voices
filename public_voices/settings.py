@@ -70,6 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'public_voices.wsgi.application'
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

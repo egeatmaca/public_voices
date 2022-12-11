@@ -15,15 +15,18 @@ Including another URLconf
 """
 from django.urls import path
 from django.contrib import admin
-from public_voices.views import hot_topics, create_topic, topic, create_comment, analyze, signup, login
+import public_voices.views as views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', login),
-    path('signup', signup),
-    path('hot_topics', hot_topics),
-    path('create_topic', create_topic),
-    path('topic/<str:topic_id>', topic),
-    path('create_comment/<str:topic_id>', create_comment),
-    path('analyze/<str:topic_id>', analyze)
+    path('', views.index),
+    path('login/', views.login),
+    path('signup/', views.signup),
+    path('set_password/<str:user_id>/', views.set_password),
+    path('logout/', views.logout),
+    path('hot_topics/', views.hot_topics),
+    path('create_topic/', views.create_topic),
+    path('topic/<str:topic_id>/', views.topic),
+    path('create_comment/<str:topic_id>/', views.create_comment),
+    path('analyze/<str:topic_id>/', views.analyze)
 ]

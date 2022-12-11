@@ -95,8 +95,12 @@ class Comment(Model):
 
 
 class User(Model):
-    def __init__(self, username, password, created_at, updated_at):
+    collection_name = 'users'
+    collection = db.users
+
+    def __init__(self, email, username):
+        self.email = email
         self.username = username
-        self.password = password
-        self.created_at = created_at
-        self.updated_at = updated_at
+        self.password = None
+        self.created_at = dt.now()
+        self.updated_at = dt.now()

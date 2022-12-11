@@ -15,7 +15,12 @@
                 <a href="/"> <h1>Public Voices </h1> </a>
             </div>
             <div class="app_body">
-                <form class="auth_form">
+                {% for error in errors %}
+                    <div class="error">
+                        <p> {{ error }} </p>
+                    </div>
+                {% endfor %}
+                <form class="auth_form" action="/signup/" method="post">
                     <input type="email" name="email" placeholder="Email" required/> <br/>
                     <input type="text" name="username" placeholder="Username" required/> <br/>
                     <button class="btn_submit"> Sign up! </button>
