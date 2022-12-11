@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from public_voices.models import Topic, Comment, User
 from bson.objectid import ObjectId
 from bcrypt import hashpw, gensalt, checkpw
+from datetime import datetime as dt
 
 
 # Path: /
@@ -57,6 +58,7 @@ def topic(request, topic_id):
 def create_comment(request, topic_id):
     # return HttpResponse(request.Path:)
     Comment.insert_one(Comment(request.POST['content'], topic_id, request.session['user_id']))
+    Topic.update_one({'_id': ObjectId(topic_id)}, {'$set': {'updated_at': dt.now()}})
     return redirect(f'/topic/{topic_id}')
 
 

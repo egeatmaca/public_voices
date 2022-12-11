@@ -21,7 +21,7 @@ class Model:
 
     @classmethod
     def find(cls, query):
-        iter = cls.collection.find(query)
+        iter = cls.collection.find(query).sort('updated_at', -1)
         records = []
         for record in iter:
             records.append(record)
@@ -84,7 +84,8 @@ class Comment(Model):
         self.content = content
         self.topic_id = topic_id
         self.user_id = user_id
-        self.date_posted = dt.now()
+        self.created_at = dt.now()
+        self.updated_at = dt.now()
 
     @classmethod
     def insert_one(cls, model_obj):
