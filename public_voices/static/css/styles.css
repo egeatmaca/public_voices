@@ -8,14 +8,21 @@ body {
 }
 
 .app_header {
-    background-color: #40f0a0;
-    color: #171717;
+    background-color: #171717;
     width: 100%;
     padding: 1%;
     position: fixed;
     top: 0;
     left: 0;
     box-shadow: 0 0 2.5px 0 #171717;
+}
+
+.app_header span#public {
+    color: #6dd3a5;
+}
+
+.app_header span#voices {
+    color: #be3939;
 }
 
 .app_header h1 image {
@@ -26,11 +33,6 @@ body {
 h1, h2, h3 {
     margin: 0;
     padding: 0;
-}
-
-h1 {
-    color: #26288a;
-    text-shadow: #242424 0 0 1.5px;
 }
 
 .app_body {
@@ -51,7 +53,7 @@ h1 {
 .agree .disagree_label {
     float: left;
     margin-left: 2.5%;
-    color: #8b1515;
+    color: #a02c2c;
 }
 
 .agree .agree_label {
@@ -80,7 +82,7 @@ h1 {
 .modal_bottom {
     position: fixed;
     bottom: 0%;
-    background-color: #40f0a0;
+    background-color: #6dd3a5;
     color: #171717;
     width: 100%;
     padding: 1%;
@@ -89,7 +91,7 @@ h1 {
 }
 
 button,.btn {
-    background-color: #8b1515;
+    background-color: #a02c2c;
     color: antiquewhite;
     border: none;
     border-radius: 10px;
@@ -121,7 +123,7 @@ input, textarea {
 /* Cards & Card Lists */
 
 .card {
-    background-color: #40f0a0;
+    background-color: #6dd3a5;
     color: rgb(0, 0, 0);
     text-align: left;
     padding: 2.5% 2.5%;
@@ -131,7 +133,7 @@ input, textarea {
 }
 
 .card_list h2, .card_list h3 {
-    color: #8b1515;
+    color: #a02c2c;
 }
 
 a {
@@ -142,7 +144,7 @@ a {
     float: right;
     margin-right: 2.5%;
     margin-top: 2.5%;
-    color: #8b1515;
+    color: #a02c2c;
 }
 
 .inline_block {
@@ -164,7 +166,7 @@ a {
 /* Authentication */
 
 .auth_form {
-    background-color: #40f0a0;
+    background-color: #6dd3a5;
     color: rgb(0, 0, 0);
     padding: 2.5% 2.5%;
     margin: 2.5% 0;
