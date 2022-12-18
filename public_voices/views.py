@@ -5,6 +5,7 @@ from public_voices.models import Topic, Comment, User
 from bson.objectid import ObjectId
 from bcrypt import hashpw, gensalt, checkpw
 from datetime import datetime as dt
+from public_voices.TopicAnalyzer import TopicAnalyzer
 
 
 # Path: /
@@ -64,7 +65,9 @@ def create_comment(request, topic_id):
 
 # Path: /analyze/<str:topic_id>
 def analyze(request, topic_id):
-    return render(request, 'analyze.html')
+    ta = TopicAnalyzer(topic_id)
+    ta.get_word_cloud()
+    return render(request, 'analyze.html', {'topic_id': topic_id})
 
 
 # Path: /signup

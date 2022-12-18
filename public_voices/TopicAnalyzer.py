@@ -8,7 +8,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-from models import Comment
+from public_voices.models import Comment
 from bson.objectid import ObjectId
 from wordcloud import WordCloud, STOPWORDS
 import os

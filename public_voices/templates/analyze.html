@@ -21,9 +21,10 @@
                         <p> {{ error }} </p>
                     </div>
                 {% endif %}
-                <div>
+                <div class="analyze">
                     <h2> Analyze </h2>
                     <h3> Word Cloud </h3>
+                    <img src={{ '/static/images/word_clouds/topic' | add:topic_id | add:'.png' }} alt="Word Cloud" width="500" height="500" />
                     <h3> Agree Points Distribution </h3>
                     <h3> Word Clouds by Agree Points </h3>
                 </div>
