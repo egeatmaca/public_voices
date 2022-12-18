@@ -66,7 +66,8 @@ def create_comment(request, topic_id):
 # Path: /analyze/<str:topic_id>
 def analyze(request, topic_id):
     ta = TopicAnalyzer(topic_id)
-    ta.get_word_cloud()
+    ta.get_agree_distribution(save=True)
+    ta.get_word_clouds()
     return render(request, 'analyze.html', {'topic_id': topic_id})
 
 

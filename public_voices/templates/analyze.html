@@ -21,12 +21,31 @@
                         <p> {{ error }} </p>
                     </div>
                 {% endif %}
-                <div class="analyze">
-                    <h2> Analyze </h2>
-                    <h3> Word Cloud </h3>
-                    <img src={{ '/static/images/word_clouds/topic' | add:topic_id | add:'.png' }} alt="Word Cloud" width="100%" height="100%" />
-                    <h3> Agree Points Distribution </h3>
-                    <h3> Word Clouds by Agree Points </h3>
+                <div class="dashboard">
+                    <div class="card">
+                        <h2> Do people agree with the initial comment? </h2>
+                        <img src={{ '/static/images/plots/topic' | add:topic_id | add:'_agree_dist' | add:'.png'  }} alt="No data available" width="100%" height="50%" >
+                    </div>
+
+                    <div class="card">
+                        <h2> What are people talking about? </h2>
+                        <img src={{ '/static/images/plots/topic' | add:topic_id | add:'.png' }} alt="No data available" width="100%" height="50%" />
+                    </div>
+
+                    <div class="card">
+                        <h2> Which words are used to agree? </h2>
+                        <img src={{ '/static/images/plots/topic' | add:topic_id | add:'_agree' | add:'.png' }} alt="No data available" width="100%" height="50%" />
+                    </div>
+                    
+                    <div class="card">
+                        <h2> Which words are used to disagree? </h2>
+                        <img src={{ '/static/images/plots/topic' | add:topic_id | add:'_disagree' | add:'.png' }} alt="No data available" width="100%" height="50%" />
+                    </div>
+
+                    <div class="card">
+                        <h2> Which words are used to be neutral? </h2>
+                        <img src={{ '/static/images/plots/topic' | add:topic_id | add:'_neutral' | add:'.png' }} alt="No data available" width="100%" height="50%" />
+                    </div>
                 </div>
             </div>
         </body>
