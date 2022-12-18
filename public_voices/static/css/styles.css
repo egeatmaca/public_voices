@@ -17,6 +17,10 @@ body {
     box-shadow: 0 0 2.5px 0 #171717;
 }
 
+.app_header h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
 .app_header span#public {
     color: #6dd3a5;
 }

@@ -16,7 +16,17 @@
             <a href="/"> <h1><span id="public"> Public </span> <span id="voices">Voices</span> </h1> </a>
             </div>
             <div class="app_body">
-                <h2> Coming soon... </h2>
+                {% if error %}
+                    <div class="error">
+                        <p> {{ error }} </p>
+                    </div>
+                {% endif %}
+                <div>
+                    <h2> Analyze </h2>
+                    <h3> Word Cloud </h3>
+                    <h3> Agree Points Distribution </h3>
+                    <h3> Word Clouds by Agree Points </h3>
+                </div>
             </div>
         </body>
 </html>
