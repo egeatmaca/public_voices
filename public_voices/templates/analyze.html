@@ -22,28 +22,51 @@
                     </div>
                 {% endif %}
                 <div class="dashboard">
+                    <h2> All Comments </h2>
                     <div class="card">
                         <h2> Do people agree with the initial comment? </h2>
                         <img src={{ '/static/images/plots/topic' | add:topic_id | add:'_agree_dist' | add:'.png'  }} alt="No data available" width="100%" height="50%" >
                     </div>
-
+                    <div class="card">
+                        <h2> How is the sentiment? </h2>
+                        <div class="scorecard"> Polarity: {{ all_sentiment_polarity }} </div>
+                        <div class="scorecard"> Subjectivity: {{ all_sentiment_subjectivity }} </div>
+                    </div>
                     <div class="card">
                         <h2> What are people talking about? </h2>
                         <img src={{ '/static/images/plots/topic' | add:topic_id | add:'.png' }} alt="No data available" width="100%" height="50%" />
                     </div>
 
+                    <h2> Comments That Agree </h2>
                     <div class="card">
-                        <h2> Which words are used to agree? </h2>
+                        <h2> How is the sentiment? </h2>
+                        <div class="scorecard"> Polarity: {{agree_sentiment_polarity}} </div>
+                        <div class="scorecard"> Subjectivity: {{agree_sentiment_subjectivity}} </div>
+                    </div>
+                    <div class="card">
+                        <h2> What are people talking about? </h2>
                         <img src={{ '/static/images/plots/topic' | add:topic_id | add:'_agree' | add:'.png' }} alt="No data available" width="100%" height="50%" />
                     </div>
                     
+                    <h2> Comments That Disagree </h2>
                     <div class="card">
-                        <h2> Which words are used to disagree? </h2>
+                        <h2> How is the sentiment? </h2>
+                        <div class="scorecard"> Polarity: {{ disagree_sentiment_polarity }} </div>
+                        <div class="scorecard"> Subjectivity: {{ disagree_sentiment_subjectivity }} </div>
+                    </div>
+                    <div class="card">
+                        <h2> What are people talking about? </h2>
                         <img src={{ '/static/images/plots/topic' | add:topic_id | add:'_disagree' | add:'.png' }} alt="No data available" width="100%" height="50%" />
                     </div>
 
+                    <h2> Neutral Comments </h2>
                     <div class="card">
-                        <h2> Which words are used to be neutral? </h2>
+                        <h2> How is the sentiment? </h2>
+                        <div class="scorecard"> Polarity: {{ neutral_sentiment_polarity }} </div>
+                        <div class="scorecard"> Subjectivity: {{ neutral_sentiment_subjectivity }} </div>
+                    </div>
+                    <div class="card">
+                        <h2> What are people talking about? </h2>
                         <img src={{ '/static/images/plots/topic' | add:topic_id | add:'_neutral' | add:'.png' }} alt="No data available" width="100%" height="50%" />
                     </div>
                 </div>

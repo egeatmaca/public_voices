@@ -2,9 +2,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from wordcloud import WordCloud, STOPWORDS
-import os
+from textblob import TextBlob
 # from models import Comment
 from public_voices.models import Comment
 
@@ -78,7 +79,33 @@ class TopicAnalyzer:
         return self.word_clouds
 
     
+    def get_sentiment(self, text):
+        sentiment = TextBlob(text).sentiment 
+        return {'polarity': sentiment.polarity, 'subjectivity': sentiment.subjectivity}
+
+    def analyze_sentiments(self):
+        sentiments = self.comments.content.apply(self.get_sentiment)
+        sentiments = pd.DataFrame(sentiments.tolist())
+
+        sentiment_analysis = {}
+        sentiment_analysis['all_sentiment_polarity'] = sentiments.polarity.mean()
+        sentiment_analysis['all_sentiment_subjectivity'] = sentiments.subjectivity.mean(
+        )
+        sentiment_analysis['agree_sentiment_polarity'] = sentiments.loc[self.comments.agree > 0, 'polarity'].mean()
+        sentiment_analysis['agree_sentiment_subjectivity'] = sentiments.loc[self.comments.agree > 0, 'subjectivity'].mean(
+        )
+        sentiment_analysis['neutral_sentiment_polarity'] = sentiments.loc[self.comments.agree == 0, 'polarity'].mean(
+        )
+        sentiment_analysis['neutral_sentiment_subjectivity'] = sentiments.loc[self.comments.agree == 0, 'subjectivity'].mean(
+        )
+        sentiment_analysis['disagree_sentiment_polarity'] = sentiments.loc[self.comments.agree < 0, 'polarity'].mean(
+        )
+        sentiment_analysis['disagree_sentiment_subjectivity'] = sentiments.loc[self.comments.agree < 0, 'subjectivity'].mean(
+        )
+
+        return sentiment_analysis
 
 if __name__ == '__main__':
     ta = TopicAnalyzer('639614f151df2860db0fdbad')
     print(ta.get_word_clouds())
+    print(ta.analyze_sentiments())

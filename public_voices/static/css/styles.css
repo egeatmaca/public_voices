@@ -173,13 +173,25 @@ a {
 
 .dashboard .card {
     background-color:#ffffff;
-    text-align: left;
     box-shadow: 0 0 0 0 #ffffff;
+    text-align: center;
 }
 
 .dashboard .card h2 {
     color: #151618;
-    margin-bottom: 1%;
+    margin: 1% 0%;
+}
+
+.dashboard .card .scorecard {
+    background-color: #00b34ecc;
+    color: #151618;
+    text-align: center;
+    padding: 2.5% 2.5%;
+    margin: 2.5% 2.5%;
+    border-radius: 10px;
+    box-shadow: 0 0 2.5px 0 #151618;
+    display: inline-block;
+    width: max-content;
 }
 
 /* Authentication */

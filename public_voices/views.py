@@ -68,7 +68,12 @@ def analyze(request, topic_id):
     ta = TopicAnalyzer(topic_id)
     ta.get_agree_distribution(save=True)
     ta.get_word_clouds()
-    return render(request, 'analyze.html', {'topic_id': topic_id})
+    sentiment_analysis = ta.analyze_sentiments()
+
+    context = {'topic_id': topic_id}
+    context.update(sentiment_analysis)
+
+    return render(request, 'analyze.html', context)
 
 
 # Path: /signup
