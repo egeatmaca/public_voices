@@ -3,7 +3,7 @@ A public conversation app enabling users to analyze comments of peers and unders
 
 URL: http://144.126.246.226:8000
 
-*** Still in development ***
+*** Work in progress ***
 
 ## Problem
 Social media platforms are the medium for public conversation. They enable us to speak up and express our ideas on important topics. However due to the huge number of posts, listening to this conversation is not always easy. We can easily lose the overview, get informed by fake news or always read one-sided arguments because of personalization.
