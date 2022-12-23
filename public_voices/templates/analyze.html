@@ -36,6 +36,10 @@
                         <h2> What are people talking about? </h2>
                         <img src={{ '/static/images/plots/topic' | add:topic_id | add:'.png' }} alt="No data available" width="100%" height="50%" />
                     </div>
+                    <div class="card">
+                        <h2> PCA Analysis </h2>
+                        {{ component_words_and_effects | safe }}
+                    </div>
 
                     <h2> Comments That Agree </h2>
                     <div class="card">

@@ -6,6 +6,7 @@ from bson.objectid import ObjectId
 from bcrypt import hashpw, gensalt, checkpw
 from datetime import datetime as dt
 from public_voices.TopicAnalyzer import TopicAnalyzer
+import pandas as pd
 
 
 # Path: /
@@ -65,13 +66,25 @@ def create_comment(request, topic_id):
 
 # Path: /analyze/<str:topic_id>
 def analyze(request, topic_id):
-    ta = TopicAnalyzer(topic_id)
-    ta.get_agree_distribution(save=True)
-    ta.get_word_clouds()
-    sentiment_analysis = ta.analyze_sentiments()
-
     context = {'topic_id': topic_id}
+    ta = TopicAnalyzer(topic_id)
+
+    ta.get_agree_distribution(save=True)
+    
+    ta.get_word_clouds()
+    
+    sentiment_analysis = ta.analyze_sentiments()
     context.update(sentiment_analysis)
+
+    ta.apply_pca()
+    component_features = ta.map_components_to_features()
+    component_features = pd.DataFrame([[k, ', '.join(v)] 
+                                                    for k, v in component_features.items()],
+                                                    columns=['Discussion Component', 'Associated Words'])
+    component_effects = ta.get_component_effects().round(2).to_frame().rename(columns={0: 'Effect on Agree Pts.'})
+    component_words_and_effects = component_features.join(
+        component_effects, on='Discussion Component').sort_values(by='Discussion Component')
+    context['component_words_and_effects'] = component_words_and_effects.to_html(index=False)
 
     return render(request, 'analyze.html', context)
 

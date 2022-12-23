@@ -4,7 +4,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from sklearn.decomposition import PCA
+from sklearn.decomposition import PCA 
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+import pandas as pd
+import statsmodels.api as sm
 from wordcloud import WordCloud, STOPWORDS
 from textblob import TextBlob
 # from models import Comment
@@ -17,12 +21,12 @@ class TopicAnalyzer:
 
         vectorizer = CountVectorizer(
             stop_words='english').fit(self.comments.content)
-        self.count_vectors = pd.DataFrame(vectorizer.transform(
+        self.df_count = pd.DataFrame(vectorizer.transform(
             self.comments.content).toarray(), columns=vectorizer.get_feature_names_out())
 
         tfidf_vectorizer = TfidfVectorizer(
             stop_words='english').fit(self.comments.content)
-        self.tfidf_vectors = pd.DataFrame(
+        self.df_tfidf = pd.DataFrame(
             tfidf_vectorizer.transform(self.comments.content).toarray(),
             columns=tfidf_vectorizer.get_feature_names_out())
 
@@ -57,25 +61,25 @@ class TopicAnalyzer:
 
         if not self.comments.empty:
             self.word_clouds['all'] = self.make_word_cloud(
-                self.count_vectors.sum(), 
+                self.df_count.sum(), 
                 save_file=os.path.join(self.plots_dir, f'topic{self.topic_id}.png'))
         
         agree_idx = self.comments.agree > 0
         if agree_idx.any():
             self.word_clouds['agree'] = self.make_word_cloud(
-                    self.count_vectors.loc[agree_idx].sum(),
+                    self.df_count.loc[agree_idx].sum(),
                     save_file=os.path.join(self.plots_dir, f'topic{self.topic_id}_agree.png')) 
 
         neutral_idx = self.comments.agree == 0
         if neutral_idx.any():
             self.word_clouds['neutral'] = self.make_word_cloud(
-                self.count_vectors.loc[neutral_idx].sum(),
+                self.df_count.loc[neutral_idx].sum(),
                 save_file=os.path.join(self.plots_dir, f'topic{self.topic_id}_neutral.png'))
 
         disagree_idx = self.comments.agree < 0
         if disagree_idx.any():
             self.word_clouds['disagree'] = self.make_word_cloud(
-                self.count_vectors.loc[disagree_idx].sum(),
+                self.df_count.loc[disagree_idx].sum(),
                 save_file=os.path.join(self.plots_dir, f'topic{self.topic_id}_disagree.png'))
 
         return self.word_clouds
@@ -107,25 +111,44 @@ class TopicAnalyzer:
 
         return sentiment_analysis
 
-    def get_components(self):
-        eig_vals, _ = np.linalg.eig(self.tfidf_vectors)
-        n_components = np.where((np.cumsum(eig_vals) / np.sum(eig_vals)) > 0.8)[0] + 1
+    def apply_pca(self):
+        pca = PCA()
+        pca.fit(self.df_tfidf)
 
-        pca = PCA(n_components=n_components)
-        pca.fit(self.tfidf_vectors)
-        components = pd.DataFrame(pca.components_)
+        n_components = np.where(pca.explained_variance_ratio_.cumsum() >= 0.8)[0][0] + 1
+        
+        self.df_pca = pd.DataFrame(pca.transform(self.df_tfidf)[:, :n_components])
 
-        return components
+        return self.df_pca
 
-    def map_features_to_components(self, components):
-        # TODO
-        return 
+    def map_components_to_features(self):
+        self.scaler = MinMaxScaler()
+        self.df_tfidf_scaled = pd.DataFrame(self.scaler.fit_transform(self.df_tfidf), columns=self.df_tfidf.columns)
+        self.df_pca_scaled = pd.DataFrame(self.scaler.fit_transform(self.df_pca), columns=self.df_pca.columns)
+
+        word_coefs = {}
+        for word in self.df_tfidf_scaled.columns:
+            model = sm.OLS(self.df_tfidf_scaled[word], self.df_pca_scaled).fit()
+            word_coefs[word] = model.params
+
+        self.word_coefs = pd.DataFrame(word_coefs).T
+
+        self.component_features = {}
+        for component in self.word_coefs.columns:
+            self.component_features[component] = self.word_coefs.index[self.word_coefs[component] > 0.1].tolist()
+        
+        return self.component_features
 
     def get_component_effects(self):
-        # TODO
-        return 
+        self.agree_scaled = self.scaler.fit_transform(self.comments[['agree']])
+        model = sm.OLS(self.agree_scaled, self.df_pca_scaled).fit()
+        print(model.params)
+        return model.params
 
 if __name__ == '__main__':
     ta = TopicAnalyzer('639614f151df2860db0fdbad')
     print(ta.get_word_clouds())
     print(ta.analyze_sentiments())
+    print(ta.apply_pca())
+    print(ta.map_components_to_features())
+    print(ta.get_component_effects())

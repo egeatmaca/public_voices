@@ -194,6 +194,22 @@ a {
     width: max-content;
 }
 
+.dashboard .card table {
+    background-color: #00b34ecc;
+    color: #151618;
+    text-align: center;
+    margin: 2.5% 2.5%;
+    border-radius: 10px;
+    box-shadow: 0 0 2.5px 0 #151618;
+    display: inline-block;
+    width: max-content;
+}
+
+.dashboard .card table th, .dashboard .card table td {
+    padding: 1.5%;
+    text-align: center;
+}
+
 /* Authentication */
 
 .auth_form {
