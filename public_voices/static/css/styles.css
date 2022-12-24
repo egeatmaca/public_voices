@@ -90,7 +90,7 @@ h2 {
 .modal_bottom {
     position: fixed;
     bottom: 0%;
-    background-color: #00b34d;
+    background-color: #16ce66;
     color: #151618;
     width: 100%;
     padding: 1%;
@@ -131,12 +131,13 @@ input, textarea {
 /* Cards & Card Lists */
 
 .card {
+    background-color: #ffffff;
     color: #151618;
     text-align: left;
     padding: 2.5% 2.5%;
     margin: 2.5% 0;
     border-radius: 10px;
-    box-shadow: 0 0 2.5px 0 #151618;
+    box-shadow: 0 0 10px 0 #151618;
 }
 
 a {
@@ -181,21 +182,10 @@ a {
 }
 
 .dashboard .card .scorecard {
-    background-color: #00b34d;
+    background-color: #16ce66;
     color: #151618;
     text-align: center;
     padding: 2.5% 2.5%;
-    margin: 2.5% 2.5%;
-    border-radius: 10px;
-    box-shadow: 0 0 2.5px 0 #151618;
-    display: inline-block;
-    width: max-content;
-}
-
-.dashboard .card table {
-    background-color: #00b34d;
-    color: #151618;
-    text-align: center;
     margin: 2.5% 2.5%;
     border-radius: 10px;
     box-shadow: 0 0 2.5px 0 #151618;
@@ -211,7 +201,7 @@ a {
 /* Authentication */
 
 .auth_form {
-    background-color: #00b34d;
+    background-color: #16ce66;
     color: rgb(0, 0, 0);
     padding: 2.5% 2.5%;
     margin: 2.5% 0;
