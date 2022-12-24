@@ -76,15 +76,18 @@ def analyze(request, topic_id):
     sentiment_analysis = ta.analyze_sentiments()
     context.update(sentiment_analysis)
 
-    ta.apply_pca()
-    component_features = ta.map_components_to_features()
-    component_features = pd.DataFrame([[k, ', '.join(v)] 
-                                                    for k, v in component_features.items()],
-                                                    columns=['Discussion Component', 'Associated Words'])
-    component_effects = ta.get_component_effects().round(2).to_frame().rename(columns={0: 'Effect on Agree Pts.'})
-    component_words_and_effects = component_features.join(
-        component_effects, on='Discussion Component').sort_values(by='Discussion Component')
-    context['component_words_and_effects'] = component_words_and_effects.to_html(index=False)
+    try:
+        ta.apply_pca()
+        component_features = ta.map_components_to_features()
+        component_features = pd.DataFrame([[k, ', '.join(v)] 
+                                                        for k, v in component_features.items()],
+                                                        columns=['Discussion Component', 'Associated Words'])
+        component_effects = ta.get_component_effects().round(2).to_frame().rename(columns={0: 'Effect on Agree Pts.'})
+        component_words_and_effects = component_features.join(
+            component_effects, on='Discussion Component').sort_values(by='Discussion Component')
+        context['component_words_and_effects'] = component_words_and_effects.to_html(index=False)
+    except:
+        context['component_words_and_effects'] = 'Not enough data to perform PCA.'
 
     return render(request, 'analyze.html', context)
 

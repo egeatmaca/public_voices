@@ -142,7 +142,6 @@ class TopicAnalyzer:
     def get_component_effects(self):
         self.agree_scaled = self.scaler.fit_transform(self.comments[['agree']])
         model = sm.OLS(self.agree_scaled, self.df_pca_scaled).fit()
-        print(model.params)
         return model.params
 
 if __name__ == '__main__':
