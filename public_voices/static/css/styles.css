@@ -1,10 +1,10 @@
 /* General */
 
 body {
-    /* background-color: #faebd7; */
     font-family: 'Roboto', sans-serif;
     align-items: center;
     text-align: center;
+    background: linear-gradient(#16ce66, #1da7d1);
 }
 
 .app_header {
@@ -22,11 +22,11 @@ body {
 }
 
 .app_header span#public {
-    color: #00b34d;
+    color: #2ca8ce;
 }
 
 .app_header span#voices {
-    color: #CE2D1B;
+    color: #24cf6e;
 }
 
 .app_header h1 image {
@@ -40,7 +40,7 @@ h1, h2, h3 {
 }
 
 h2 {
-    color: #CE2D1B;
+    color: #b13224;
 }
 
 .app_body {
@@ -99,7 +99,7 @@ h2 {
 }
 
 button,.btn {
-    background-color: #CE2D1B;
+    background-color: #b13224;
     color: #ffffff;
     text-shadow: #151618 0 0 1px;
     border: none;
@@ -115,7 +115,7 @@ button,.btn {
 }
 
 .btn_submit {
-    background-color: #CE2D1B;
+    background-color: #b13224;
     width: 50%;
 }
 
@@ -131,7 +131,6 @@ input, textarea {
 /* Cards & Card Lists */
 
 .card {
-    background-color: #00b34d;
     color: #151618;
     text-align: left;
     padding: 2.5% 2.5%;
@@ -172,9 +171,8 @@ a {
 }
 
 .dashboard .card {
-    background-color:#ffffff;
-    box-shadow: 0 0 0 0 #ffffff;
-    text-align: center;
+    color: #151618;
+    box-shadow: none;
 }
 
 .dashboard .card h2 {
@@ -183,7 +181,7 @@ a {
 }
 
 .dashboard .card .scorecard {
-    background-color: #00b34ecc;
+    background-color: #00b34d;
     color: #151618;
     text-align: center;
     padding: 2.5% 2.5%;
@@ -195,7 +193,7 @@ a {
 }
 
 .dashboard .card table {
-    background-color: #00b34ecc;
+    background-color: #00b34d;
     color: #151618;
     text-align: center;
     margin: 2.5% 2.5%;
