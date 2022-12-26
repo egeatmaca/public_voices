@@ -36,8 +36,8 @@ class TopicAnalyzer:
         agree_value_counts = self.comments.agree.value_counts().sort_index()
         index_map = {-3: 'Totally disagree', -2: 'Disagree', -1: 'Kinda disagree', 0: 'Neutral', 1: 'Kinda agree', 2: 'Agree', 3: 'Totally agree'}
         agree_value_counts.index = agree_value_counts.index.map(index_map)
-        sns.set_palette(sns.dark_palette("Green"))
-        plot = sns.barplot(x=agree_value_counts.index, y=agree_value_counts.values)
+        plot = sns.barplot(x=agree_value_counts.index, y=agree_value_counts.values, palette=sns.dark_palette('green', n_colors=7))
+        plot.set_xticklabels(plot.get_xticklabels(), rotation=20)
         if save:
             plot.figure.savefig(os.path.join(self.plots_dir, f'topic{self.topic_id}_agree_dist.png'))
         return agree_value_counts, plot
