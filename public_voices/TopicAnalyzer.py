@@ -109,6 +109,9 @@ class TopicAnalyzer:
         sentiment_analysis['disagree_sentiment_subjectivity'] = sentiments.loc[self.comments.agree < 0, 'subjectivity'].mean(
         )
 
+        for key, value in sentiment_analysis.items():
+            sentiment_analysis[key] = round(value, 2)
+
         return sentiment_analysis
 
     def apply_pca(self):
