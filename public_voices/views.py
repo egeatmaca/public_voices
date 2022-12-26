@@ -105,7 +105,7 @@ def signup(request):
         if user_with_email is not None:
             return render(request, 'signup.html', {'errors': ['Email already in use!']})
 
-        user_with_username = User.find({'username': request.POST['username']})
+        user_with_username = User.find_one({'username': request.POST['username']})
         if user_with_username is not None:
             return render(request, 'signup.html', {'errors': ['Username already in use!']})
 
