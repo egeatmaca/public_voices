@@ -20,16 +20,16 @@ class Model:
         return res
 
     @classmethod
-    def find(cls, query):
-        iter = cls.collection.find(query).sort('updated_at', -1)
+    def find(cls, query, projection=None):
+        iter = cls.collection.find(query, projection).sort('updated_at', -1)
         records = []
         for record in iter:
             records.append(record)
         return records
 
     @classmethod
-    def find_one(cls, query):
-        iter = cls.collection.find(query)
+    def find_one(cls, query, projection=None):
+        iter = cls.collection.find(query, projection)
         for record in iter:
             return record
         return None

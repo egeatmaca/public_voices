@@ -1,4 +1,9 @@
-FROM python:3.10
+FROM apache/spark:latest
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip
 
 WORKDIR /app
 
@@ -6,8 +11,10 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-RUN python manage.py makemigrations
+RUN python3 manage.py makemigrations
 
-RUN python manage.py migrate
+RUN python3 manage.py migrate
 
-CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
+ENTRYPOINT [ "python3" ]
+
+CMD [ "manage.py", "runserver", "0.0.0.0:8000" ]
