@@ -105,6 +105,10 @@ def signup(request):
         if user_with_email is not None:
             return render(request, 'signup.html', {'errors': ['Email already in use!']})
 
+        user_with_username = User.find({'username': request.POST['username']})
+        if user_with_username is not None:
+            return render(request, 'signup.html', {'errors': ['Username already in use!']})
+
         user = User(request.POST['email'], request.POST['username'])
         user.password = hashpw(request.POST['password'].encode('utf-8'), gensalt())
         res = User.insert_one(user)
