@@ -135,7 +135,7 @@ class TopicAnalyzer:
 
         self.component_features = {}
         for component in self.word_coefs.columns:
-            self.component_features[component] = self.word_coefs.index[self.word_coefs[component] > 0.5].tolist()
+            self.component_features[component] = self.word_coefs.index[self.word_coefs[component] > 0.1].tolist()
         
         return self.component_features
 
