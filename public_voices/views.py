@@ -98,19 +98,33 @@ def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html')
     elif request.method == 'POST':
-        res = User.insert_one(User(request.POST['email'], request.POST['username']))
-        return redirect(f'/set_password/{res.inserted_id}/')
+        if request.POST['password'] != request.POST['confirm_password']:
+            return render(request, 'signup.html', {'errors': ['Passwords do not match!']})
 
-# Path: /set_password
-@csrf_exempt
-def set_password(request, user_id):
-    if request.method == 'GET':
-        return render(request, 'set_password.html', {'user_id': user_id})
-    elif request.method == 'POST' and user_id:
-        User.update_one({'_id': ObjectId(user_id)},
-                        {'$set': {'password': hashpw(request.POST['password'].encode('utf-8'), gensalt())}})
-        request.session['user_id'] = user_id
+        user_with_email = User.find_one({'email': request.POST['email']})
+        if user_with_email is not None:
+            return render(request, 'signup.html', {'errors': ['Email already in use!']})
+
+        user = User(request.POST['email'], request.POST['username'])
+        user.password = hashpw(request.POST['password'].encode('utf-8'), gensalt())
+        res = User.insert_one(user)
+        # return redirect(f'/set_password/{res.inserted_id}/')
         return redirect('/')
+
+# # Path: /set_password
+# @csrf_exempt
+# def set_password(request, user_id):
+#     # TODO: Add password reset code, instead of user id parameter
+#     if request.method == 'GET':
+#         return render(request, 'set_password.html', {'user_id': user_id})
+#     elif request.method == 'POST' and user_id:
+#         if request.POST['password'] != request.POST['confirm_password']:
+#             return render(request, 'set_password.html', {'errors': ['Passwords do not match!']})
+
+#         User.update_one({'_id': ObjectId(user_id)},
+#                         {'$set': {'password': hashpw(request.POST['password'].encode('utf-8'), gensalt())}})
+#         request.session['user_id'] = user_id
+#         return redirect('/')
 
 # Path: /login
 @csrf_exempt
