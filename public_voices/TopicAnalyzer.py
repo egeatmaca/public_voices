@@ -17,7 +17,18 @@ from public_voices.models import Comment
 class TopicAnalyzer:
     def __init__(self, topic_id) -> None:
         self.topic_id = topic_id
-        self.comments = pd.DataFrame(Comment.find({'topic_id': topic_id})).astype({'agree': 'int32'})
+        self.comments = pd.DataFrame(Comment.find(
+            {'topic_id': topic_id})).astype({'agree': 'int32'})
+
+        self.comments['content'] = self.comments.content.str.lower()
+        self.comments['content'] = self.comments.content.str.replace(
+            r'@\S+', '')
+        self.comments['content'] = self.comments.content.str.replace(
+            r'http\S+', '')
+        self.comments['content'] = self.comments.content.str.replace(
+            r'www\S+', '')
+        self.comments['content'] = self.comments.content.str.replace(
+            r'[^a-z ]', '')
 
         vectorizer = CountVectorizer(
             stop_words='english').fit(self.comments.content)
